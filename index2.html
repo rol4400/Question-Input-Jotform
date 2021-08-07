@@ -1,51 +1,20 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-<title>autoresizing textarea</title>
-<style type="text/css">
-textarea {
-    border: 0 none white;
-    overflow: hidden;
-    padding: 0;
-    outline: none;
-    resize: none;
-}
-</style>
-<script type="text/javascript">
-var observe;
-if (window.attachEvent) {
-    observe = function (element, event, handler) {
-        element.attachEvent('on'+event, handler);
-    };
-}
-else {
-    observe = function (element, event, handler) {
-        element.addEventListener(event, handler, false);
-    };
-}
-function init () {
-    var text = document.getElementById('text');
-    function resize () {
-        text.style.height = 'auto';
-        text.style.height = text.scrollHeight+'px';
-    }
-    /* 0-timeout to get the already changed text */
-    function delayedResize () {
-        window.setTimeout(resize, 0);
-    }
-    observe(text, 'change',  resize);
-    observe(text, 'cut',     delayedResize);
-    observe(text, 'paste',   delayedResize);
-    observe(text, 'drop',    delayedResize);
-    observe(text, 'keydown', delayedResize);
 
-    text.focus();
-    text.select();
-    resize();
-}
-</script>
+<head>
+    <meta charset='utf-8' />
+    <title>Textarea Autosize</title>
+
+    <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.0/autosize.min.js'></script>
+    <script src='min/scripts.min.js?v=2144a6851a516e1bce43b2cd7ca91776'></script>
+    <link type="text/css" rel="stylesheet" href="min/styles.min.css?v=2144a6851a516e1bce43b2cd7ca91776" />
+
 </head>
-<body onload="init();">
-<textarea rows="1" style="height:1em;" id="text"></textarea>
+
+<body>
+    <textarea id='autosizeText'></textarea>
 </body>
+
 </html>

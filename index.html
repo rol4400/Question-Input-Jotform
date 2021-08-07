@@ -449,8 +449,50 @@ if (window.JotForm && JotForm.accessible) $('input_49').setAttribute('tabindex',
    setTimeout(function() {
 JotForm.paymentExtrasOnTheFly([null,{"name":"Your","qid":"1","text":"♣ Your word is a lamp for my feet, a light on my path (Psalms 119:105) ♣","type":"control_head"},{"name":"submit2","qid":"2","text":"Submit","type":"control_button"},null,{"description":"","name":"name","qid":"4","text":"Name","type":"control_fullname"},{"description":"","name":"group","qid":"5","subLabel":"","text":"Group","type":"control_dropdown"},null,null,null,null,{"description":"","name":"scjId","qid":"10","subLabel":"","text":"SCJ ID \u002F Date of Birth","type":"control_textbox"},{"description":"","name":"age11","qid":"11","subLabel":"","text":"Age","type":"control_number"},{"name":"pageBreak","qid":"12","text":"Page Break","type":"control_pagebreak"},null,null,null,null,null,null,{"description":"","name":"input19","qid":"19","subLabel":"","text":"","type":"control_textarea"},null,null,null,null,null,{"description":"","name":"input25","qid":"25","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input28","qid":"28","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input31","qid":"31","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input34","qid":"34","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input37","qid":"37","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input40","qid":"40","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input43","qid":"43","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input46","qid":"46","subLabel":"","text":"","type":"control_textarea"},null,null,{"description":"","name":"input49","qid":"49","subLabel":"","text":"","type":"control_textarea"},{"name":"divider50","qid":"50","type":"control_divider"},{"name":"Your51","qid":"51","text":"♣ Your word is a lamp for my feet, a light on my path (Psalms 119:105) ♣","type":"control_head"},null,null,{"name":"question_1","qid":"54","text":"","type":"control_widget"},{"name":"input55","qid":"55","text":"","type":"control_widget"},{"name":"input56","qid":"56","text":"","type":"control_widget"},{"name":"input57","qid":"57","text":"","type":"control_widget"},{"name":"input58","qid":"58","text":"","type":"control_widget"},{"name":"input59","qid":"59","text":"","type":"control_widget"},{"name":"input60","qid":"60","text":"","type":"control_widget"},{"name":"input61","qid":"61","text":"","type":"control_widget"},{"name":"input62","qid":"62","text":"","type":"control_widget"},{"name":"input63","qid":"63","text":"","type":"control_widget"}]);}, 20); 
 </script>
+<script type="text/javascript">
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementByClass('expandable-text');
+    function resize () {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+</script>
+<style type="text/css">
+textarea {
+    border: 0 none white;
+    overflow: hidden;
+    padding: 0;
+    outline: none;
+    resize: none;
+}
+</style>
 </head>
-<body>
+<body onload="init();">
 <form class="jotform-form" action="https://submit.jotform.com/submit/212131537239046/" method="post" name="form_212131537239046" id="212131537239046" accept-charset="utf-8" autocomplete="on">
   <input type="hidden" name="formID" value="212131537239046" />
   <input type="hidden" id="JWTContainer" value="" />
@@ -571,7 +613,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"Your","qid":"1","text":"♣ Your wo
         })
       }
     };
-    _cFieldFrame.src = "//widgets.jotform.io/textareaAutosize/?qid=54&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+    _cFieldFrame.src = "./index2.html/?qid=54&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
     _cFieldFrame.addClassName("custom-field-frame-rendered");
   }
 }, 0);
@@ -626,8 +668,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"Your","qid":"1","text":"♣ Your wo
       <li class="form-line" data-type="control_widget" id="id_56">
         <div id="cid_56" class="form-input-wide" data-layout="full">
           <div data-widget-name="Question" style="width:100%;text-align:Left;overflow-x:auto" data-component="widget-field">
-            <iframe data-client-id="528f290e597910923e000004" title="Question" frameBorder="0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe" class="custom-field-frame" id="customFieldFrame_56" src="" style="max-width:1009000px;border:none;width:100%;height:100px" data-width="1009000" data-height="100">
-            </iframe>
+            <textarea rows="1" style="height:1em;" class="expandable-text"></textarea>
             <div class="widget-inputs-wrapper">
               <input type="hidden" id="input_56" class="form-hidden form-widget  " name="q56_input56" value="" />
               <input type="hidden" id="widget_settings_56" class="form-hidden form-widget-settings" value="%5B%5D" data-version="2" />
